@@ -3,9 +3,9 @@
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "margin-top": 9,
-    "height": 25, // Waybar height (to be removed for auto height)
+    "height": 20, // Waybar height (to be removed for auto height)
     "width": 1850, // Waybar width
-    //"spacing": 4, // Gaps between modules (4px)
+    "spacing": 2, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
@@ -20,21 +20,42 @@
         "mpd",
         "idle_inhibitor",
         "tray",
-	"pulseaudio",
-        "network",
-        "power-profiles-daemon",
        // "cpu",
        // "memory",
-        "temperature",
         "backlight",
-        "battery",
-        "battery#bat2"
-       // "custom/power"
+	"group/media",
+	"custom/space",
+        "group/hardware",
+	"custom/power-option"
     ],
+
+    //custom modules
+	"custom/space":{
+		"format": " ",
+		"interval": "once",
+		"tooltip": false
+	},
+
+	"custom/power-option":{
+		"format": "⏻"
+	},
+
+
+    //group modules
+    	
+	"group/media": {
+		"orientation": "horizontal",
+		"modules" : ["pulseaudio", "network"]
+	},
+
+	"group/hardware": {
+		"orientation": "horizontal",
+		"modules": ["power-profiles-daemon", "temperature", "battery"]
+	},
     //Modules configuration
     "hyprland/workspaces": {
         "disable-scroll": true,
-        "all-outputs": true,
+        "all-outputs": false,
         "warp-on-scroll": false,
         "format": "{icon}",
         "format-icons": {
@@ -43,12 +64,13 @@
            // "3": "",
            // "4": "",
            // "5": "",
-            "urgent": "",
-            "active": "",
-            "default": ""
+           // "urgent": "",
+           // "active": "",
+           // "default": ""
+//	    "default" : ""
         },
 	"persistent-workspaces": {
-     	   "*": 5 // Always show a workspace with name '3', on all outputs if it does not exists
+     	   "*": 4 // Always show a workspace with name '3', on all outputs if it does not exists
           // "4": ["eDP-1"], // Always show a workspace with name '4', on output 'eDP-1' if it does not exists
          //  "5": ["eDP-1", "DP-2"] // Always show a workspace with name '5', on outputs 'eDP-1' and 'DP-2' if it does not exists
     }
@@ -170,11 +192,11 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        //"format-ethernet": "{ipaddr}/{cidr} ",
+        //"tooltip-format": "{ifname} via {gwaddr} ",
+        //"format-linked": "{ifname} (No IP) ",
+       // "format-disconnected": "Disconnected ⚠",
+        //"format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -186,8 +208,8 @@
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
@@ -207,16 +229,5 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
-    "custom/power": {
-        "format" : "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
-    }
+
 }
