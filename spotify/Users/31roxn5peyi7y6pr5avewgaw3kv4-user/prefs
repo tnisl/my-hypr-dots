@@ -1,0 +1,3 @@
+connect.mdns_devices="[]"
+connect.dial_devices="[{\"address\":\"192.168.1.170\",\"app_state\":\"INSTALLABLE\",\"created_timestamp\":1755092001,\"device_id\":\"ffcc5d59-35d9-405b-af6e-b7470be120fc\",\"dial_location_url\":\"http://192.168.1.170:1064/\",\"display_name\":\"[LG] webOS TV OLED55A1PTA\",\"last_seen\":1755100579,\"manufacturer\":\"LG\",\"model_name\":\"OLED55A1PTA\",\"product_cap\":\"\",\"public_ip\":\"2001:ee1:7c50:470:698d:9492:d613:82f3\",\"wol\":{\"all_interfaces\":false,\"delay_ms\":250,\"mac\":\"24e853923c5a\",\"port\":9,\"retries\":480}}]"
+audio.play_bitrate_non_metered_migrated=true
